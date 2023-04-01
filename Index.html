@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Your New Friend</title>
+    <link rel="stylesheet" href="style.css"/>
+
+  </head>
+
+  <body>
+
+    <div id="personagem">
+      <img src="My project-1.png" alt="Didi, o novo amigo">
+      <p>Olá, eu sou o Didi, seu novo amigo!</p>
+      <p>Fui criado com o intuito de te fazer feliz!</p>
+      <p>Qual é o seu nome?</p>
+      <input type="text" id="nomeUsuario">
+      <button onclick="mostrarMensagem()">Enviar</button>
+    </div>
+    
+    <script>
+
+function mostrarMensagem(mensagem) {
+			mensagemElement.innerHTML = mensagem;
+			setTimeout(function() {
+				mensagemElement.innerHTML = "p";
+			}, 5000);
+		}
+
+      const musicas = [
+        "Pra você guardei o amor que nunca soube dar - Nando Reis",
+        "You are the sunshine of my life - Stevie Wonder",
+        "I could watch you for a lifetime You're my favorite movie A thousand endings You mean everything to me - Skrillex",
+        "O meu corpo balança querendo encontrar o seu amor O swing do Olodum me leva Com você eu vou - Gilsons",
+        "If I ever were to lose you I'd surely lose myself Everything I have found, dear I've not found by myself - Pearl Jam ",
+        "Ô governador, o senhor abaixa o preço da passagem Que pra casa da cheirosa é mó viagem Na moral, sacanagem - Poesia Acustica 6",
+        "Pode confiar em mim Não te troco por ninguem não precisa achar que vou embora insegurança não faz bem - Baco Exu do Blues",
+        "Voltar a ter total percepção de tudo Se você fica mal eu nem penso direito Além das dimensões descobrimos um mundo Onde não é obrigatório a ser perfeito - Knust", 
+        "Então me diz quantas cores o arco íris tem E quais você não gosta Que eu vou lá mudar agora e aposta amor Que é difícil conversar comigo Que eu posso ser o seu melhor amigo E ao mesmo tempo te tirar do abrigo e te levar pra voar - dudu",
+        "Oh minha gata, morada dos meus sonhos Todo dia, se pudesse eu ia estar com você Eu já te via muito antes nos meus sonhos Eu procurei a vida inteira por alguém como você - Charlie Brown Jr.",
+        "Um belo sonho veio então despertar minha vontade Tudo vale a pena pra te encontrar Me livrei de tudo aquilo e consegui mudar Tudo que foi feito em troca de uma amizade Mas felicidade é poder estar com quem Você gosta em algum lugar - Charlie Brown Jr.",
+        "Eu vou te amar como um idiota ama Vou te pendurar num quadro bem do lado da minha cama - Jão",
+        "And if you go, I wanna go with you And if you die, I wanna die with you - System of a Down",
+        "Se for preciso, eu pego um barco Eu remo por seis meses como peixe, pra te ver Tão pra inventar um mar grande o bastante Que me assuste e que eu desista de você - Rubel",
+        "E teus cabelos arco-íris me travou, me enlouqueceu Mais perfeita que as canções de Beethoven, Mozart, Orfeu Deusa dos meus sonhos, versão feminina de Morfeu Labirinto de Dédalo que meu coração se perdeu -  Kamaitachi",
+
+
+
+
+
+      ];
+      let indiceMusica = 0;
+      
+      function mostrarMensagem() {
+        const nomeUsuario = document.getElementById("nomeUsuario").value;
+        const divPersonagem = document.getElementById("personagem");
+        
+        divPersonagem.textContent = `Olá, eu sou o Didi, seu novo amigo! Fui criado com o intuito de te fazer feliz!`;
+        divPersonagem.textContent = `Que nome lindo, aposto que meu criador também acha, ${nomeUsuario}!`;
+   
+     
+  
+        
+        setTimeout(() => {
+          const resposta = confirm("Você gosta de música?");
+          if (resposta) {
+            const listaMusicas = document.createElement("ul");
+            listaMusicas.id = "listaMusicas";
+            listaMusicas.innerHTML = `
+              <li>${musicas[indiceMusica]}</li>
+            `;
+            
+          
+
+            divPersonagem.textContent = "Que legal! Meu criador também ama música e separou alguns trechos que lembram você:";
+            divPersonagem.appendChild(listaMusicas);
+            
+    
+
+            const botaoProximo = document.createElement("button");
+            botaoProximo.textContent = "Próximo";
+            botaoProximo.onclick = () => {
+              indiceMusica++;
+              if (indiceMusica >= musicas.length) {
+                indiceMusica = 0;
+              }
+              const liAtual = document.querySelector("#listaMusicas li");
+              liAtual.textContent = musicas[indiceMusica];
+            };
+            
+            divPersonagem.appendChild(botaoProximo);
+            
+            const imagemPersonagem = document.createElement("img");
+        imagemPersonagem.src = "My project-1.png";
+        imagemPersonagem.alt = "Didi, o novo amigo";
+        divPersonagem.insertBefore(imagemPersonagem, divPersonagem.firstChild);
+        chat.style.textAlign = 'center';
+
+          } else {
+            divPersonagem.textContent += "\n\nQue pena! Meu criador ama música e acha que ela pode alegrar o dia de qualquer pessoa.";
+          }
+        }, 2000);
+
+   
+
+      }
+    </script>
+  </body>
+</html>
